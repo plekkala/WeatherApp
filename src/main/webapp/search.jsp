@@ -12,7 +12,7 @@
 function validateform(){  
 var cityVal=document.form.city.value;  
   
-if (cityVal==null || cityVal==""){  
+if (cityVal==null || cityVal==""||cityVal.trim().length<=0){  
   alert("City can't be blank");  
   return false;  
 }
