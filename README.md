@@ -10,13 +10,21 @@ Mac OS
 
 As of 07/07/2016
 
-Junit code is not there
 
+To be Done:
+
+1)Null check on cities is not done
+
+2)Code Refractoring needs to be done
+
+3)Junit cases are to be developed
+
+4)jsp can be developed better
 
 Issues:
 
-1)Null check on cities is not done
-2)Code Refractoring needs to be done
+1) When user searches with empty or null city name, It will provide a Javascript Alert
+
 
 
 
