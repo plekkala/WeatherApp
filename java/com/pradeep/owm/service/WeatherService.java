@@ -47,18 +47,28 @@ public class WeatherService {
 	
 
 	public WeatherModel showWeather(String city) {
-		String response = getWeatherFromURL(city);
-		if(response!=null){
-			JSONObject jsonObj = (response != null) ? new JSONObject(response) : null;
-			return transform(jsonObj);
+		if(city!=null){
+			String response = getWeatherFromURL(city);
+			JSONObject jsonObj = StringToJSON(response);
+			WeatherModel model = transform(jsonObj);
+			return model;
 		}
 		else
 			return null;
 		
 	}
 	
+	private JSONObject StringToJSON(String response){
+		if(response!=null){
+			JSONObject jsonObj = (response != null) ? new JSONObject(response) : null;
+			return jsonObj;
+		}
+		return null;
+		
+	}
+	
 	private WeatherModel transform(JSONObject jsonObject){
-		System.out.println("jsonObject"+jsonObject);
+		//System.out.println("jsonObject"+jsonObject);
 		WeatherModel model = new WeatherModel();
 		if(jsonObject!=null){
 			if(!jsonObject.has(WeatherModelConstants.weatherObj) && jsonObject.getString(WeatherModelConstants.cod).equals("404")){
@@ -113,11 +123,9 @@ public class WeatherService {
 	}
 	
 	private String getWeatherFromURL(String city) {
-		System.out.println(city);
 		city = city.replace(" ", "");
-		System.out.println(city);
 		String url = URL + city + appid + key;
-		System.out.println(url);
+		//System.out.println(url);
 		String response = httpGET(url);
 		return response;
 

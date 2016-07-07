@@ -43,6 +43,7 @@ public class WeatherServlet extends HttpServlet {
 			returnPage = "/display.jsp";
 			String city = request.getParameter("city");
 			WeatherModel model = service(city);
+			if(model!=null){
 			System.out.println(model.toString());
 			request.setAttribute("date", model.getTodaysDate());
 			request.setAttribute("city", city);
@@ -54,6 +55,7 @@ public class WeatherServlet extends HttpServlet {
 			request.setAttribute("message", model.getErrorMessage());
 			request.setAttribute("cod", model.getCod());
 			request.setAttribute("error", true);
+			}
 		}
 
 		request.getRequestDispatcher(returnPage).forward(request, response);
