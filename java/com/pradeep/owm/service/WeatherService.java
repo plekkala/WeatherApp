@@ -24,6 +24,7 @@ public class WeatherService {
 
 	String URL = "http://api.openweathermap.org/data/2.5/weather?q=";
 
+	//API Key can be taken of out this class
 	String key = "a6b28ecb80055b5497e57472dfcd3199";
 
 	String appid = "&appid=";
@@ -56,7 +57,7 @@ public class WeatherService {
 		
 	}
 	
-	public WeatherModel transform(JSONObject jsonObject){
+	private WeatherModel transform(JSONObject jsonObject){
 		System.out.println("jsonObject"+jsonObject);
 		WeatherModel model = new WeatherModel();
 		if(jsonObject!=null){
